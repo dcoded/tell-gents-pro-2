@@ -42,16 +42,16 @@ namespace ExpertSystem.Factor
             double confidence = 1;
             
             
-            if longitude.ContainsKey(tuple.buoy) {
-                if Math.Abs(tuple.longitude - longitude[tuple.buoy]) > 5 {
+            if (longitude.ContainsKey(tuple.buoy)) {
+                if (Math.Abs(tuple.longitude - longitude[tuple.buoy]) > 5) {
                   confidence *= 0.5;
                 }
                 longitude[tuple.buoy] = (tuple.day - 1)*longitude[tuple.buoy] + tuple.longitude;
             }
             else { longitude.Add(tuple.buoy, tuple.longitude };
             
-            if latitude.ContainsKey(tuple.buoy) {
-                if Math.Abs(tuple.longitude - longitude[tuple.buoy]) > 1 {
+            if (latitude.ContainsKey(tuple.buoy)) {
+                if (Math.Abs(tuple.longitude - longitude[tuple.buoy]) > 1) {
                   confidence *= 0.5;
                 }
                 longitude[tuple.buoy] = (tuple.day - 1)*longitude[tuple.buoy] + tuple.longitude;
