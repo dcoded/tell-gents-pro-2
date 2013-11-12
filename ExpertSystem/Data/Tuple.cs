@@ -67,6 +67,11 @@ namespace ExpertSystem.Data
         
             this.error_    = false;
         }
+
+        public Tuple()
+        {
+            this.error_ = false;
+        }
     
         public Tuple(String unparsed)
         {

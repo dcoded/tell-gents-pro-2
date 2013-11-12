@@ -92,8 +92,8 @@ namespace ExpertSystem.Data
     public class TupleEnum<T> : IEnumerator<T> where T : new()
     {
         private StreamReader reader_ = null;
-        private string source_ = null;
-        private FieldInfo[] fields_ = null;
+        private FieldInfo[]  fields_ = null;
+        private string       source_ = null;
 
         public TupleEnum(string source)
         {
