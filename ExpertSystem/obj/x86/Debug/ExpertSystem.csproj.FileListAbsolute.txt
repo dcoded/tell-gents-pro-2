@@ -1,0 +1,11 @@
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\obj\x86\Debug\ExpertSystem.csprojResolveAssemblyReference.cache
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\ExpertSystem.exe
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\ExpertSystem.pdb
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.dll
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.IO.dll
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.pdb
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.xml
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.IO.pdb
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.IO.xml
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\obj\x86\Debug\ExpertSystem.exe
+S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\obj\x86\Debug\ExpertSystem.pdb
