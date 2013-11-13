@@ -32,12 +32,14 @@ namespace ExpertSystem
 
         static void Main(string[] args)
         {
-            //if(args.Length < 1)
-            //{
-            //        Console.Out.WriteLine("Usage: ExpertSystem <dataset>");
-            //        return;
-            //}
-            string filename = "elnino.txt";
+            if (args.Length < 1)
+            {
+                Console.Out.WriteLine("Usage: ExpertSystem <dataset>");
+                return;
+            }
+
+            string filename = args[0];
+
 
             if(!File.Exists(filename))
             {
@@ -60,9 +62,9 @@ namespace ExpertSystem
             string path = Path.GetFullPath(filename);
 
 
-            StreamWriter log = new StreamWriter(path + filename + ".log.txt");
-            StreamWriter hq  = new StreamWriter(path + filename + ".hq.txt");
-            StreamWriter lq  = new StreamWriter(path + filename + ".lq.txt");
+            StreamWriter log = new StreamWriter(path + ".log.txt");
+            StreamWriter hq  = new StreamWriter(path + ".hq.txt");
+            StreamWriter lq  = new StreamWriter(path + ".lq.txt");
 
       
   
@@ -75,7 +77,7 @@ namespace ExpertSystem
                 log.WriteLine(String.Format("[{0,5}%]\t{1}",Math.Round(report.quality()*100,1), tuple.ToString()));
 
                 float confidence = report.quality();
-                if (confidence >= 0.25)
+                if (confidence >= 0.5)
                 {
                     hq.WriteLine(tuple.ToString());
                 }
@@ -97,7 +99,7 @@ namespace ExpertSystem
             print_final_evaluation(filename, count, lowq_reports.ToArray());
 
             Console.Out.WriteLine("Done!");
-            Console.Read();
+         //   Console.Read();
         }
 
         private static void print_final_evaluation(String filename, int size,
@@ -108,11 +110,11 @@ namespace ExpertSystem
             Console.Out.WriteLine("Entries : " + size);
             Console.Out.WriteLine("Low Q   : " + lq_reports.Length);
             
-            Console.Out.WriteLine("Rejected Entries:");
-            foreach(QualityReport report in lowq_reports)
-            {
-                    Console.Out.WriteLine(report.tuple());
-            }
+            //Console.Out.WriteLine("Rejected Entries:");
+            //foreach(QualityReport report in lowq_reports)
+            //{
+            //    Console.Out.WriteLine(report.tuple());
+            //}
         }
     }
 }
