@@ -30,7 +30,7 @@ namespace ExpertSystem.Factor
     class RegressionAnalysis : QualityFactor
     {
         private static double PPMCC_STRONG_BOUNDRY  = 0.9;
-        private static double ERROR_DILUTION_FACTOR = 0.625;
+        private static double ERROR_DILUTION_FACTOR = 0.5;
         private static double FLYWHEEL_ENABLE_WAIT  = 8;
 
         private SimpleRegression[] regressions_;
@@ -40,6 +40,8 @@ namespace ExpertSystem.Factor
         private int length_;
         private int combs_;
         private int count_;
+
+        private double highest_confidence_ = 0.0;
 
         /**
          * Constructor inspects the tuple fields via reflection and
@@ -70,7 +72,7 @@ namespace ExpertSystem.Factor
          */
         public float run(Data.Tuple tuple)
         {
-            double confidence = 1;
+            double confidence = 0;
             double[] values = ParseValues(tuple);
 
             int i = 0;
@@ -81,16 +83,21 @@ namespace ExpertSystem.Factor
             {
                 for (int b = a + 1; b < length_; b++)
                 {
-                    confidence *= FilterWeakCorrelations(a, b, values, regressions_[i++]);
+                    confidence += FilterWeakCorrelations(a, b, values, regressions_[i++]);
                 }
             }
 
-            if (count_ < FLYWHEEL_ENABLE_WAIT)
-            {
-                confidence = 1.0;
-            }
+            confidence /= length_ * length_;
+
+            if (confidence > highest_confidence_)
+                highest_confidence_ = confidence;
+
+
+            confidence /= highest_confidence_;
 
             return (float)confidence;
+
+    
         }
 
         /**
@@ -155,7 +162,7 @@ namespace ExpertSystem.Factor
         {
             double[] values = new double[length_];
 
-            for (int i = 0; i < length_; i++)
+            for (int i = 1; i < length_; i++)
             {
                 values[i] = Convert.ToDouble(fields_[i].GetValue(tuple));
             }

@@ -54,6 +54,7 @@
     <Compile Include="Engine\QualityEvaluationEngine.cs" />
     <Compile Include="Engine\QualityReport.cs" />
     <Compile Include="Factor\FieldValidationFactor.cs" />
+    <Compile Include="Factor\GeolocationFactor.cs" />
     <Compile Include="Factor\HumidityCheck.cs" />
     <Compile Include="Factor\LatitudeLongitudeCheck.cs" />
     <Compile Include="Factor\QualityFactor.cs" />

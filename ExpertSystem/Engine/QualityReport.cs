@@ -38,9 +38,9 @@ namespace ExpertSystem.Engine
 
             foreach(KeyValuePair<QualityFactor, float> factor in factors_)
             {
-                quality *= factor.Value;
+                quality *= (factor.Value < 0.5) ? 0.5f : factor.Value;
+                
             }
-        
             return quality;
         }
 

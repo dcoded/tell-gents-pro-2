@@ -5,6 +5,7 @@ using ExpertSystem.Data;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Diagnostics;
 
 namespace ExpertSystem
 {
@@ -16,10 +17,12 @@ namespace ExpertSystem
     class Program
     {
         private static IngestEngine<Data.Tuple> ingest;
+        private static Stopwatch stopwatch = new Stopwatch();
 
         private static QualityEvaluationEngine quality = new QualityEvaluationEngine(
                             new FieldValidation(),
                             new LatitudeLongitudeCheck(),
+                            new GeolocationFactor(),
                             new TemperatureCheck(),
                             new HumidityCheck(),
                             new WindVelocityCheck(),
@@ -29,43 +32,69 @@ namespace ExpertSystem
 
         static void Main(string[] args)
         {
-            if(args.Length < 1)
-            {
-                    Console.Out.WriteLine("Usage: ExpertSystem <dataset>");
-                    return;
-            }
+            //if(args.Length < 1)
+            //{
+            //        Console.Out.WriteLine("Usage: ExpertSystem <dataset>");
+            //        return;
+            //}
+            string filename = "elnino.txt";
 
-            if(!File.Exists(args[0]))
+            if(!File.Exists(filename))
             {
-                Console.Out.WriteLine("Dataset file not found at: " + args[0]);
+                Console.Out.WriteLine("Dataset file not found at: " + filename);
                 return;
             }
 
-            try   { ingest = new IngestEngine<Data.Tuple>(args[0]); }
+            stopwatch.Start();
+
+            try
+            {
+                ingest = new IngestEngine<Data.Tuple>(filename);
+            }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
             }
+
+
+            string path = Path.GetFullPath(filename);
+
+
+            StreamWriter log = new StreamWriter(path + filename + ".log.txt");
+            StreamWriter hq  = new StreamWriter(path + filename + ".hq.txt");
+            StreamWriter lq  = new StreamWriter(path + filename + ".lq.txt");
+
+      
+  
 
             int count = 0;
             List<QualityReport> lowq_reports = new List<QualityReport>();
             foreach (var tuple in ingest)
             {
                 QualityReport report = quality.ingest(tuple);
-                //quality_log.println("[" + report.quality() + "] " + entry);
-                if (report.quality() >= 0.65)
+                log.WriteLine(String.Format("[{0,5}%]\t{1}",Math.Round(report.quality()*100,1), tuple.ToString()));
+
+                float confidence = report.quality();
+                if (confidence >= 0.25)
                 {
-                    //quality_log.println("[" + report.quality() + "] " + entry);
+                    hq.WriteLine(tuple.ToString());
                 }
                 else
                 {
                     lowq_reports.Add(report);
-                    //bad_quality.println(entry);
+                    lq.WriteLine(tuple.ToString());
                 }
                 count++;
             }
 
-            print_final_evaluation(args[0], count, lowq_reports.ToArray());
+
+            hq.Close();
+            lq.Close();
+            log.Close();
+
+            stopwatch.Stop();
+
+            print_final_evaluation(filename, count, lowq_reports.ToArray());
 
             Console.Out.WriteLine("Done!");
             Console.Read();
@@ -74,6 +103,7 @@ namespace ExpertSystem
         private static void print_final_evaluation(String filename, int size,
                                                    QualityReport[] lq_reports)
         {
+            Console.Out.WriteLine("Time    : " + stopwatch.Elapsed.ToString());
             Console.Out.WriteLine("File    : " + filename);
             Console.Out.WriteLine("Entries : " + size);
             Console.Out.WriteLine("Low Q   : " + lq_reports.Length);

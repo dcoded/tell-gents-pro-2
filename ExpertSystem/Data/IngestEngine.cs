@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace ExpertSystem.Data
 {
@@ -122,18 +123,12 @@ namespace ExpertSystem.Data
 
         T IEnumerator<T>.Current
         {
-            get
-            {
-                return Current;
-            }
+            get { return Current; }
         }
 
         object IEnumerator.Current
         {
-            get
-            {
-                return Current;
-            }
+            get { return Current; }
         }
 
         public T Current
@@ -152,16 +147,19 @@ namespace ExpertSystem.Data
         {
             T data = new T();
 
-            string[] token = reader_.ReadLine().Split(' ');
+            string line    = reader_.ReadLine();
+            string[] token = Regex.Split(line, "\\s+");
 
-            for (int i = 0; i < fields_.Length; i++)
+            fields_[0].SetValue(data, line);
+
+            for (int i = 1; i < fields_.Length; i++)
             {
                 switch (fields_[i].FieldType.ToString())
                 {
                     case "System.Double":
                         {
                             double result;
-                            if (Double.TryParse(token[i], out result))
+                            if (Double.TryParse(token[i-1], out result))
                             {
                                 fields_[i].SetValue(data, result);
                             }
@@ -170,7 +168,7 @@ namespace ExpertSystem.Data
                     case "System.Int32":
                         {
                             int result;
-                            if (Int32.TryParse(token[i], out result))
+                            if (Int32.TryParse(token[i-1], out result))
                             {
                                 fields_[i].SetValue(data, result);
                             }
@@ -178,7 +176,7 @@ namespace ExpertSystem.Data
                         }
                 }
             }
-
+           
             return data;
         }
     }

@@ -9,3 +9,14 @@ S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\Ma
 S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\bin\Debug\MathNet.Numerics.IO.xml
 S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\obj\x86\Debug\ExpertSystem.exe
 S:\Foundations_Intelligent_Systems\CSharp\ExpertSystem\ExpertSystem\obj\x86\Debug\ExpertSystem.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Debug\ExpertSystem.exe
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Debug\ExpertSystem.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\ExpertSystem.exe
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\ExpertSystem.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.dll
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.IO.dll
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.xml
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.IO.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Debug\MathNet.Numerics.IO.xml
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Debug\ExpertSystem.csprojResolveAssemblyReference.cache

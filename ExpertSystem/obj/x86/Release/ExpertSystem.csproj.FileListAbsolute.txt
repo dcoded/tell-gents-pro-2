@@ -1,0 +1,11 @@
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\ExpertSystem.exe
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\ExpertSystem.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.dll
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.IO.dll
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.xml
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.IO.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\bin\Release\MathNet.Numerics.IO.xml
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Release\ExpertSystem.exe
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Release\ExpertSystem.pdb
+S:\repos\tell-gents-pro-2\ExpertSystem\obj\x86\Release\ExpertSystem.csprojResolveAssemblyReference.cache

@@ -8,8 +8,10 @@ namespace ExpertSystem.Data
 {
     public class Tuple
     {
-        private String  unparsed = null;
         private bool    error_   = true;
+
+
+        public string  unparsed = null;
     
         public int buoy;
         public int day;
